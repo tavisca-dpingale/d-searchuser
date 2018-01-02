@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<dom-module id="t-searchuser-modal-content">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+
+  </template>
+
+  <script>
+    /**
+     * `t-searchuser`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class TSearchuserModalContent extends Polymer.Element {
+      static get is() { return 't-searchuser-modal-content'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 't-searchuser-modal-content'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(TSearchuserModalContent.is, TSearchuserModalContent);
+  </script>
+</dom-module>

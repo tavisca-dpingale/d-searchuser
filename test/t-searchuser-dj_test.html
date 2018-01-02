@@ -4,36 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>t-searchuser-dj test</title>
+    <title>t-searchuser test</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../t-searchuser-dj.html">
+    <link rel="import" href="../t-searchuser.html">
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <t-searchuser-dj></t-searchuser-dj>
+        <t-searchuser></t-searchuser>
       </template>
     </test-fixture>
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <t-searchuser-dj prop1="new-prop1"></t-searchuser-dj>
+        <t-searchuser prop1="new-prop1"></t-searchuser>
       </template>
     </test-fixture>
 
     <script>
-      suite('t-searchuser-dj', () => {
+      suite('t-searchuser', () => {
 
         test('instantiating the element with default properties works', () => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 't-searchuser-dj');
+          assert.equal(element.prop1, 't-searchuser');
           const elementShadowRoot = element.shadowRoot;
           const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello t-searchuser-dj!');
+          assert.equal(elementHeader.innerHTML, 'Hello t-searchuser!');
         });
 
         test('setting a property on the element works', () => {

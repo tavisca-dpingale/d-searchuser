@@ -1,0 +1,105 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="t-searchuser-modal-content.html">
+
+<dom-module id="t-searchuser">
+  <template>
+    <style>
+      :host {
+        display: block;
+        color:  var(--primary-text-color);
+        
+        --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, var(--primary-background-color));
+        --paper-menu-button: {
+          padding: var(--t-search-user-menu-btn-padding, 5px 10px 5px 5px);
+          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0,0,0,0.20));
+          font-size: var(--t-search-user-menu-btn-font-size, 16px);
+        };
+
+        --paper-menu-button-disabled: {};
+        --paper-menu-button-dropdown: {};
+        --paper-menu-button-content: {};
+
+        --paper-icon-button-disabled-text: {};
+        --paper-icon-button-ink-color: {};
+        --paper-icon-button: {
+          width: var(--t-search-user-icon-button-width, 30px);
+          height: var(--t-search-user-icon-button-height, 30px);
+          padding: var(--t-search-user-icon-button-padding, 0);
+        };
+        --paper-icon-button-disabled: {};
+        --paper-icon-button-hover: {};
+        
+        --iron-icon-width: var(--t-search-user-icon-width, 24px);
+        --iron-icon-height: var(--t-search-user-icon-height, 24px);
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0,0,0,0.20));
+      }
+
+
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+
+    <!-- TRAVELLER MENU BUTTON -->
+    <paper-menu-button no-overlap horizontal-align="left" vertical-align="top">
+      <div slot="dropdown-trigger">
+          <paper-icon-button icon="icons:settings"></paper-icon-button> Search Traveller
+      </div>
+      <paper-listbox slot="dropdown-content">
+        <paper-item>
+          <iron-icon icon="icons:search"></iron-icon> Request Traveller
+        </paper-item>
+        <paper-item  on-click="__opensearchuserdialog">
+            <iron-icon icon="icons:search"></iron-icon> Search
+        </paper-item>
+      </paper-listbox>
+    </paper-menu-button>  
+
+    <!-- SEARCH TRAVELLER DIALOG -->
+    <!-- no-cancel-on-outside-click -->
+    <paper-dialog id="searchUserDialog" no-cancel-on-esc-key always-on-top with-backdrop>
+      <h2>Header</h2>
+      <paper-dialog-scrollable>
+          <!-- SEARCH CONTENT -->
+          <t-searchuser-modal-content></t-searchuser-modal-content>
+
+          <paper-button dialog-dismiss>ok</paper-button>
+      </paper-dialog-scrollable>
+    </paper-dialog>
+
+  </template>
+
+  <script>
+    /**
+     * `t-searchuser`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class TSearchuser extends Polymer.Element {
+      static get is() { return 't-searchuser'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 't-searchuser'
+          }
+        };
+      }
+
+      __opensearchuserdialog() {
+          this.$.searchUserDialog.open();
+      }
+    }
+
+    window.customElements.define(TSearchuser.is, TSearchuser);
+  </script>
+</dom-module>
