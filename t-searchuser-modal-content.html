@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
@@ -8,10 +10,62 @@
     <style>
       :host {
         display: block;
+        width: 600px;
+        color:  var(--primary-text-color, rgba(0,0,0,0.54));
+
+        --paper-input-container: {
+          padding: 0;
+        };
+        --paper-input-container-label: {};
+        --paper-input-container-underline: {};
+        --paper-input-container-input: {
+          padding: var(--t-search-user-input-padding, 7px 10px);
+          border: 1px solid var(--t-search-user-input-border, rgba(0,0,0,0.20));
+          width: calc(100% - 20px);
+        };
+
+        --paper-input-container-underline: {
+          border-color: transparent;
+        };
+        --paper-input-container-underline-focus: {};
+
+        --paper-button: {
+          background-color: var(--t-search-user-button-bg-color, orange);
+          color: var(--t-search-user-button-color, #fff);
+        };
+      }
+
+      h2 {
+        display: block;
+        margin-top: 0;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.20);
+      }
+
+      .search-container {
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
+        @apply --layout-center;
+        margin-bottom: 30px;
+      }
+      .search-container>* {
+        margin: 0 10px;
+      }
+      .search-result-container {
+
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>[[searchusertitle]]</h2>
 
+    <div class="search-container">  
+      Search For: 
+      <paper-input no-label-float label="" placeholder="Type here"></paper-input>
+      <paper-button>Go</paper-button>
+    </div>
+
+    <div class="search-result-container">search result table</div>
+
+    
   </template>
 
   <script>
@@ -27,9 +81,9 @@
       static get is() { return 't-searchuser-modal-content'; }
       static get properties() {
         return {
-          prop1: {
+          searchusertitle: {
             type: String,
-            value: 't-searchuser-modal-content'
+            value: 'Search & Select User'
           }
         };
       }
