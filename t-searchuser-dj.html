@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="t-searchuser-dj">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `t-searchuser-dj`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class TSearchuserDj extends Polymer.Element {
+      static get is() { return 't-searchuser-dj'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 't-searchuser-dj'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(TSearchuserDj.is, TSearchuserDj);
+  </script>
+</dom-module>
