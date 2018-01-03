@@ -13,94 +13,108 @@
 <dom-module id="t-searchuser">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
-        color:  var(--primary-text-color, rgba(0,0,0,0.54));
-        
+        @apply --paper-font-common-base;
+        color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
+
         /* PAPER MENU BUTTON STYLING */
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, var(--primary-background-color));
         --paper-menu-button: {
           padding: var(--t-search-user-menu-btn-padding, 8px);
-          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0,0,0,0.20));
+          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.20));
           font-size: var(--t-search-user-menu-btn-font-size, 16px);
-          color: var(--t-search-user-menu-btn-color, rgba(0,0,0,0.65));
-        };
+          color: var(--t-search-user-menu-btn-color, rgba(0, 0, 0, 0.65));
+        }
+        ;
 
-        --paper-menu-button-disabled: {};
-        --paper-menu-button-dropdown: {};
-        --paper-menu-button-content: {};
+        --paper-menu-button-disabled: {}
+        ;
+        --paper-menu-button-dropdown: {}
+        ;
+        --paper-menu-button-content: {}
+        ;
 
         /* PAPER ICON BUTTON STYLING */
-        --paper-icon-button-disabled-text: {};
-        --paper-icon-button-ink-color: ;
+        --paper-icon-button-disabled-text: {}
+        ;
+        --paper-icon-button-ink-color:;
         --paper-icon-button: {
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
           padding: var(--t-search-user-icon-button-padding, 0);
-        };
-        --paper-icon-button-disabled: {};
-        --paper-icon-button-hover: {};
-        
+        }
+        ;
+        --paper-icon-button-disabled: {}
+        ;
+        --paper-icon-button-hover: {}
+        ;
+
         /* IRON ICON STYLING */
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0,0,0,0.20));
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.20));
         --iron-icon: {
           margin-right: 10px;
-        };
+        }
+        ;
 
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
         --paper-item: {
-          color: var(--t-search-user-item-color, rgba(0,0,0,0.65));
+          color: var(--t-search-user-item-color, rgba(0, 0, 0, 0.65));
           cursor: pointer;
-        };
+        }
+        ;
         --paper-item-selected-weight: var(--t-search-user-item-weight, 500);
         --paper-item-selected: {
-          color: var(--t-search-user-item-selected-color, rgba(0,0,0,0.87));
-          background-color: var(--t-search-user-item-selected-bg, rgba(0,0,0,0.05));
-        };
-        --paper-item-disabled-color: ;
-        --paper-item-disabled: {};
+          color: var(--t-search-user-item-selected-color, rgba(0, 0, 0, 0.87));
+          background-color: var(--t-search-user-item-selected-bg, rgba(0, 0, 0, 0.05));
+        }
+        ;
+        --paper-item-disabled-color:;
+        --paper-item-disabled: {}
+        ;
         --paper-item-focused: {
-          color: var(--t-search-user-item-focused-color, rgba(0,0,0,0.87));
-          background-color: var(--t-search-user-item-focused-bg, rgba(0,0,0,0.05));
-        };
+          color: var(--t-search-user-item-focused-color, rgba(0, 0, 0, 0.87));
+          background-color: var(--t-search-user-item-focused-bg, rgba(0, 0, 0, 0.05));
+        }
+        ;
       }
 
       paper-item:hover {
         --paper-item: {
-          color: var(--t-search-user-item-hover-color, rgba(0,0,0,0.87));
+          color: var(--t-search-user-item-hover-color, rgba(0, 0, 0, 0.87));
           cursor: pointer;
-        };
+        }
+        ;
       }
-
     </style>
     <h2>Hello [[prop1]]!</h2>
 
     <!-- TRAVELLER MENU BUTTON -->
     <paper-menu-button no-overlap horizontal-align="left" vertical-align="top">
       <div slot="dropdown-trigger">
-          <paper-icon-button icon="icons:settings"></paper-icon-button> Search Traveller
-          <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button>
+        <paper-icon-button icon="icons:settings"></paper-icon-button> Search Traveller
+        <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button>
       </div>
       <paper-listbox slot="dropdown-content">
         <paper-item>
           <iron-icon icon="icons:search"></iron-icon> Request Traveller
         </paper-item>
-        <paper-item  on-click="__opensearchuserdialog">
-            <iron-icon icon="icons:search"></iron-icon> Search
+        <paper-item on-click="__opensearchuserdialog">
+          <iron-icon icon="icons:search"></iron-icon> Search
         </paper-item>
       </paper-listbox>
-    </paper-menu-button>  
+    </paper-menu-button>
 
     <!-- SEARCH TRAVELLER DIALOG -->
     <!-- no-cancel-on-outside-click -->
     <paper-dialog id="searchUserDialog" no-cancel-on-esc-key always-on-top with-backdrop>
       <paper-dialog-scrollable>
 
-          <!-- SEARCH MODAL CONTENT -->
-          <t-searchuser-modal-content></t-searchuser-modal-content>
+        <!-- SEARCH MODAL CONTENT -->
+        <t-searchuser-modal-content></t-searchuser-modal-content>
 
       </paper-dialog-scrollable>
     </paper-dialog>
@@ -117,7 +131,9 @@
      * @demo demo/index.html
      */
     class TSearchuser extends Polymer.Element {
-      static get is() { return 't-searchuser'; }
+      static get is() {
+        return 't-searchuser';
+      }
       static get properties() {
         return {
           prop1: {
@@ -128,7 +144,7 @@
       }
 
       __opensearchuserdialog() {
-          this.$.searchUserDialog.open();
+        this.$.searchUserDialog.open();
       }
     }
 
