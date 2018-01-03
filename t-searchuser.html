@@ -54,10 +54,6 @@
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
         --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.20));
-        --iron-icon: {
-          margin-right: 10px;
-        }
-        ;
 
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
@@ -88,6 +84,9 @@
           cursor: pointer;
         }
         ;
+      }
+      paper-item iron-icon {
+        margin-right: 10px;
       }
     </style>
     <h2>Hello [[prop1]]!</h2>

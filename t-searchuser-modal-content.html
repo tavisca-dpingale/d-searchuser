@@ -119,6 +119,18 @@
       table td {
         @apply --paper-font-common-nowrap;
       }
+
+      .result-pagination,ul {
+        @apply --layout-horizontal;
+        @apply --layout-end-justified;
+        @apply --layout-center;
+      }
+      ul,li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
     </style>
     <h3>[[searchusertitle]]</h3>
 
@@ -153,7 +165,7 @@
             <tr>
               <td>John</td>
               <td>Doe</td>
-              <td>johb@email.com</td>
+              <td>johdoe@email.com</td>
               <td>johndoe</td>
               <td>
                 <a href="#">Select</a>
@@ -161,6 +173,27 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="result-pagination">
+        <ul>
+          <li>
+              <a href="#">1</a>
+          </li>
+          <li>
+              <a href="#">2</a>
+          </li>
+          <li>
+              <a href="#">3</a>
+          </li>
+        </ul>
+        <a href="#" title="prev">
+            <iron-icon icon="icons:chevron-left"></iron-icon>
+        </a>
+        <a href="#" title="next">
+            <iron-icon icon="icons:chevron-right"></iron-icon>
+        </a>
       </div>
     </div>
 
