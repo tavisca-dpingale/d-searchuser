@@ -11,7 +11,6 @@
        :host {
         display: block;
         @apply --paper-font-subhead;
-        width: var(--t-search-user-modal-width, 700px);
         color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
 
         --paper-input-container: {
@@ -24,7 +23,7 @@
         ;
         --paper-input-container-input: {
           padding: var(--t-search-user-input-padding, 10px);
-          border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.20));
+          border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.15));
           width: calc(var(--t-search-user-input-width, 270px) - 20px);
         }
         ;
@@ -44,15 +43,21 @@
         ;
       }
 
+      [disabled] {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+
       a {
         color: var(--t-search-user-button-bg-color, orange);
+        text-decoration: none;
       }
 
       h3 {
         display: block;
         margin-top: 0;
         padding-bottom: 20px;
-        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
       }
 
       .search-container {
@@ -96,41 +101,98 @@
         color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
       }
 
+      .search-results {
+        max-width: 100%;
+        overflow: hidden;
+        overflow-x: auto;
+        margin-bottom: 20px;
+      }
+
       table {
         width: 100%;
-        border-top: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        border-right: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+        border-top: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
+        border-right: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
+        margin-bottom: 15px;
       }
 
       table td,
       table th {
         padding: 5px;
-        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        border-left: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
+        border-left: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
         color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
         font-size: var(--t-search-user-table-font-size, 14px);
         text-align: left;
+        white-space: nowrap;
       }
 
       table th {
         font-weight: 500;
       }
 
-      table td {
-        @apply --paper-font-common-nowrap;
-      }
-
-      .result-pagination,ul {
+      .result-pagination,
+      ul {
         @apply --layout-horizontal;
         @apply --layout-end-justified;
         @apply --layout-center;
       }
-      ul,li {
+
+      ul,
+      li {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-      
+
+      li a {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+        @apply --paper-font-caption;
+        padding: 5px;
+        border: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.15));
+        height: 15px;
+        width: 15px;
+        margin: 0 1px;
+      }
+
+      li:hover a,
+      li[active] a {
+        background-color: var(--t-search-user-result-page-selected-bg, orange);
+        border-color: var(--t-search-user-result-page-selected-border-color, orange);
+        color: #fff;
+      }
+
+      .result-pagination iron-icon {
+        margin-left: 10px;
+      }
+
+      @media (max-width: 767px) {
+         :host {
+          --paper-input-container-input: {
+            padding: var(--t-search-user-input-padding, 10px);
+            border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.15));
+            width: calc(100% - 20px);
+          }
+          ;
+        }
+        .search-container,
+        .result-header {
+          @apply --layout-vertical;
+        }
+        .search-container {
+          text-align: center;
+        }
+        .search-container>*,
+        .result-header>*,
+        .result-header small {
+          display: block;
+          width: 100%;
+          margin: 0 0 5px 0; 
+        }
+        .result-header small {
+          margin-bottom: 0;
+        }
+      }
     </style>
     <h3>[[searchusertitle]]</h3>
 
@@ -178,21 +240,21 @@
       <!-- PAGINATION -->
       <div class="result-pagination">
         <ul>
-          <li>
-              <a href="#">1</a>
+          <li active>
+            <a href="#">1</a>
           </li>
           <li>
-              <a href="#">2</a>
+            <a href="#">2</a>
           </li>
           <li>
-              <a href="#">3</a>
+            <a href="#">3</a>
           </li>
         </ul>
         <a href="#" title="prev">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
+          <iron-icon icon="icons:chevron-left"></iron-icon>
         </a>
         <a href="#" title="next">
-            <iron-icon icon="icons:chevron-right"></iron-icon>
+          <iron-icon icon="icons:chevron-right"></iron-icon>
         </a>
       </div>
     </div>

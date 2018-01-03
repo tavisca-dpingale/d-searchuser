@@ -22,7 +22,7 @@
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, var(--primary-background-color));
         --paper-menu-button: {
           padding: var(--t-search-user-menu-btn-padding, 8px);
-          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.20));
+          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.15));
           font-size: var(--t-search-user-menu-btn-font-size, 16px);
           color: var(--t-search-user-menu-btn-color, rgba(0, 0, 0, 0.65));
         }
@@ -38,7 +38,7 @@
         /* PAPER ICON BUTTON STYLING */
         --paper-icon-button-disabled-text: {}
         ;
-        --paper-icon-button-ink-color:;
+
         --paper-icon-button: {
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
@@ -53,7 +53,7 @@
         /* IRON ICON STYLING */
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.20));
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.15));
 
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
@@ -76,6 +76,14 @@
           background-color: var(--t-search-user-item-focused-bg, rgba(0, 0, 0, 0.05));
         }
         ;
+        --paper-dialog: {
+          max-width: var(--t-search-user-modal-max-width, 700px);
+        }
+        ;
+        --paper-dialog-scrollable: {
+          width: 100%;
+        }
+        ;
       }
 
       paper-item:hover {
@@ -85,11 +93,19 @@
         }
         ;
       }
+
       paper-item iron-icon {
         margin-right: 10px;
       }
+
+      .close-dialog {
+        position: absolute;
+        z-index: 1;
+        right: 17px;
+        top: 0;
+        cursor: pointer;
+      }
     </style>
-    <h2>Hello [[prop1]]!</h2>
 
     <!-- TRAVELLER MENU BUTTON -->
     <paper-menu-button no-overlap horizontal-align="left" vertical-align="top">
@@ -111,6 +127,7 @@
     <!-- no-cancel-on-outside-click -->
     <paper-dialog id="searchUserDialog" no-cancel-on-esc-key always-on-top with-backdrop>
       <paper-dialog-scrollable>
+        <iron-icon icon="icons:close" class="close-dialog" dialog-dismiss></iron-icon>
 
         <!-- SEARCH MODAL CONTENT -->
         <t-searchuser-modal-content></t-searchuser-modal-content>
