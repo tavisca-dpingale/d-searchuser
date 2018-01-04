@@ -7,6 +7,7 @@
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
 <link rel="import" href="../iron-icons/hardware-icons.html">
 <link rel="import" href="t-searchuser-modal-content.html">
 
@@ -16,13 +17,12 @@
        :host {
         display: block;
         @apply --paper-font-common-base;
-        color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
 
         /* PAPER MENU BUTTON STYLING */
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, var(--primary-background-color));
         --paper-menu-button: {
           padding: var(--t-search-user-menu-btn-padding, 8px);
-          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.15));
+          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.20));
           font-size: var(--t-search-user-menu-btn-font-size, 16px);
           color: var(--t-search-user-menu-btn-color, rgba(0, 0, 0, 0.65));
         }
@@ -43,37 +43,33 @@
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
           padding: var(--t-search-user-icon-button-padding, 0);
+          --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
         }
-        ;
-        --paper-icon-button-disabled: {}
-        ;
-        --paper-icon-button-hover: {}
         ;
 
         /* IRON ICON STYLING */
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.15));
+        /* --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30)); */
 
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
         --paper-item: {
           color: var(--t-search-user-item-color, rgba(0, 0, 0, 0.65));
           cursor: pointer;
+          --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
         }
         ;
         --paper-item-selected-weight: var(--t-search-user-item-weight, 500);
         --paper-item-selected: {
           color: var(--t-search-user-item-selected-color, rgba(0, 0, 0, 0.87));
-          background-color: var(--t-search-user-item-selected-bg, rgba(0, 0, 0, 0.05));
+          background-color: var(--t-search-user-item-selected-bg, #f1f1f1);
         }
         ;
-        --paper-item-disabled-color:;
-        --paper-item-disabled: {}
-        ;
+
         --paper-item-focused: {
           color: var(--t-search-user-item-focused-color, rgba(0, 0, 0, 0.87));
-          background-color: var(--t-search-user-item-focused-bg, rgba(0, 0, 0, 0.05));
+          background-color: var(--t-search-user-item-focused-bg, #f1f1f1);
         }
         ;
         --paper-dialog: {
@@ -105,6 +101,33 @@
         top: 0;
         cursor: pointer;
       }
+      [slot="dropdown-content"] {
+        min-width: var(--t-search-user-dropdown-width, 190px);
+      }
+
+      :host([inversed]) {
+        /* PAPER MENU BUTTON STYLING */
+        --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
+        --paper-menu-button: {
+          padding: var(--t-search-user-menu-btn-padding, 8px);
+          border: 1px solid var(--t-search-user-menu-btn-border-color-inversed, #dadada);
+          font-size: var(--t-search-user-menu-btn-font-size, 16px);
+          color: var(--t-search-user-menu-btn-color-inversed, #dadada);
+
+        };
+        --paper-icon-button: {
+          width: var(--t-search-user-icon-button-width, 24px);
+          height: var(--t-search-user-icon-button-height, 24px);
+          padding: var(--t-search-user-icon-button-padding, 0);
+          --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, #dadada);
+        };
+        
+        --paper-item: {
+          --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, rgba(0, 0, 0, 0.20));
+        };
+      }
+
+
     </style>
 
     <!-- TRAVELLER MENU BUTTON -->
@@ -115,7 +138,7 @@
       </div>
       <paper-listbox slot="dropdown-content">
         <paper-item>
-          <iron-icon icon="icons:search"></iron-icon> Request Traveller
+          <iron-icon icon="social:person"></iron-icon> Register
         </paper-item>
         <paper-item on-click="__opensearchuserdialog">
           <iron-icon icon="icons:search"></iron-icon> Search
@@ -124,8 +147,7 @@
     </paper-menu-button>
 
     <!-- SEARCH TRAVELLER DIALOG -->
-    <!-- no-cancel-on-outside-click -->
-    <paper-dialog id="searchUserDialog" no-cancel-on-esc-key always-on-top with-backdrop>
+    <paper-dialog id="searchUserDialog" no-cancel-on-outside-click no-cancel-on-esc-key always-on-top with-backdrop>
       <paper-dialog-scrollable>
         <iron-icon icon="icons:close" class="close-dialog" dialog-dismiss></iron-icon>
 

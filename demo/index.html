@@ -1,30 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>t-searchuser demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <title>t-searchuser demo</title>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../t-searchuser.html">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic t-searchuser demo</h3>
-      <demo-snippet>
-        <template>
-          <t-searchuser></t-searchuser>
-        </template>
-      </demo-snippet>
-    </div>
-  </body>
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../t-searchuser.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic t-searchuser demo</h3>
+    <demo-snippet>
+      <template>
+        <h4>On white background</h4>
+        <t-searchuser></t-searchuser>
+      </template>
+    </demo-snippet>
+
+    <demo-snippet>
+      <h4>On black background: Add attribute [inversed]</h4>
+      <template>
+        <div style="background: black; padding: 20px;">
+          <t-searchuser inversed></t-searchuser>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
 </html>
