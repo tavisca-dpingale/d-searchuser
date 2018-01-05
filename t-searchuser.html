@@ -43,7 +43,6 @@
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
         /* --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30)); */
-
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
         --paper-item: {
@@ -81,8 +80,8 @@
 
       [slot="dropdown-trigger"] span {
         padding-left: 5px;
-        min-width: 150px;
-        max-width: 200px;
+        min-width: var(--t-search-user-menu-btn-min-width, 130px);
+        max-width: var(--t-search-user-menu-btn-max-width, 200px);
         @apply --paper-font-common-nowrap;
       }
 
@@ -96,6 +95,7 @@
 
       paper-item iron-icon {
         margin-right: 10px;
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
       }
 
       .close-dialog {
@@ -104,43 +104,45 @@
         right: 17px;
         top: 0;
         cursor: pointer;
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
       }
 
       [slot="dropdown-content"] {
-        min-width: var(--t-search-user-dropdown-width, 220px);
+        min-width: var(--t-search-user-dropdown-width, 200px);
       }
 
       #searchUserDialog {
         top: 0;
       }
-      :host([inversed]) {
-        /* PAPER MENU BUTTON STYLING */
+
+       :host([inversed]) {
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
         --paper-menu-button: {
           padding: var(--t-search-user-menu-btn-padding, 8px);
           border: 1px solid var(--t-search-user-menu-btn-border-color-inversed, #dadada);
           font-size: var(--t-search-user-menu-btn-font-size, 16px);
           color: var(--t-search-user-menu-btn-color-inversed, #dadada);
-
-        };
+        }
+        ;
         --paper-icon-button: {
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
           padding: var(--t-search-user-icon-button-padding, 0);
           --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, #dadada);
-        };
-        
+        }
+        ;
+
         --paper-item: {
           --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, rgba(0, 0, 0, 0.20));
-        };
+        }
+        ;
       }
-
     </style>
 
     <!-- TRAVELLER MENU BUTTON -->
     <paper-menu-button no-overlap horizontal-align="left" vertical-align="top">
       <div slot="dropdown-trigger">
-        <paper-icon-button icon="icons:settings"></paper-icon-button> 
+        <paper-icon-button icon="icons:settings"></paper-icon-button>
         <span title="">Choose Traveller</span>
         <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button>
       </div>
@@ -159,7 +161,7 @@
       <paper-dialog-scrollable>
         <iron-icon icon="icons:close" class="close-dialog" dialog-dismiss></iron-icon>
 
-        <!-- SEARCH MODAL CONTENT -->
+        <!-- SEARCH TRAVELLER DIALOG CONTENT -->
         <t-searchuser-modal-content></t-searchuser-modal-content>
 
       </paper-dialog-scrollable>
@@ -186,9 +188,9 @@
             type: String,
             value: 't-searchuser'
           },
-          loading:{
-            type:Boolean,
-            value:false
+          loading: {
+            type: Boolean,
+            value: false
           }
         };
       }
