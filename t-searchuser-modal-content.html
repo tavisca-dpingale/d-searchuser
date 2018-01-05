@@ -168,6 +168,16 @@
         margin-left: 10px;
       }
 
+      .error-message {
+        color: var(--error-color);
+        text-align: center;
+      }
+
+      .loader {
+        color: var(--t-search-user-loader-color, #F89406);
+        text-align: center;
+      }
+
       @media (max-width: 767px) {
          :host {
           --paper-input-container-input: {
@@ -189,7 +199,7 @@
         .result-header small {
           display: block;
           width: 100%;
-          margin: 0 0 5px 0; 
+          margin: 0 0 5px 0;
         }
         .result-header small {
           margin-bottom: 0;
@@ -198,6 +208,7 @@
     </style>
     <h3>[[searchusertitle]]</h3>
 
+    <!-- SEARCH  -->
     <div class="search-container">
       <h4>Search For:</h4>
       <paper-input no-label-float label="" placeholder="email@email.com"></paper-input>
@@ -205,6 +216,21 @@
       <div>*Leave blank to see all users for this level</div>
     </div>
 
+    <!-- LOADING -->
+    <template is="dom-if" if="{{showLoader}}">
+      <div class="loader">
+        <h4>Loading...</h4>
+      </div>
+    </template>
+
+    <!-- ERROR MESSAGES -->
+    <template is="dom-if" if="{{errormsg}}">
+      <div class="error-message">
+        <h4> [[errormsg]]</h4>
+      </div>
+    </template>
+
+    <!-- SEARCH RESULTS HEADER -->
     <div class="search-result-container">
       <div class="result-header">
         <h4>Search Result
@@ -213,7 +239,7 @@
         <a href="#">Show All Users</a>
       </div>
 
-      <!-- RESULTS -->
+      <!-- SEARCH RESULTS -->
       <div class="search-results">
         <table cellspacing="0" cellpadding="0">
           <thead>
@@ -239,7 +265,7 @@
         </table>
       </div>
 
-      <!-- PAGINATION -->
+      <!-- SEARCH RESULT PAGINATION -->
       <div class="result-pagination">
         <ul>
           <li active>
@@ -281,6 +307,14 @@
           searchusertitle: {
             type: String,
             value: 'Search & Select User'
+          },
+          showLoader: {
+            type: Boolean,
+            value: false
+          },
+          errormsg: {
+            type: Boolean,
+            value: false
           }
         };
       }
