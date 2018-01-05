@@ -73,7 +73,7 @@
         }
         ;
       }
-      
+
       [slot="dropdown-trigger"] {
         @apply --layout-horizontal;
         @apply --layout-center;
@@ -110,6 +110,9 @@
         min-width: var(--t-search-user-dropdown-width, 220px);
       }
 
+      #searchUserDialog {
+        top: 0;
+      }
       :host([inversed]) {
         /* PAPER MENU BUTTON STYLING */
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
@@ -183,6 +186,10 @@
           prop1: {
             type: String,
             value: 't-searchuser'
+          },
+          loading:{
+            type:Boolean,
+            value:false
           }
         };
       }
