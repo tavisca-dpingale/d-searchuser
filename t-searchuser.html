@@ -35,14 +35,15 @@
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
           padding: var(--t-search-user-icon-button-padding, 0);
-          --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
+          --iron-icon-fill-color: var(--t-search-user-icon-button-icon-color, rgba(0, 0, 0, 0.30));
         }
         ;
 
         /* IRON ICON STYLING */
         --iron-icon-width: var(--t-search-user-icon-width, 24px);
         --iron-icon-height: var(--t-search-user-icon-height, 24px);
-        /* --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30)); */
+        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
+
         /* PAPER ITEM STYLING */
         --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
         --paper-item: {
@@ -51,7 +52,7 @@
           --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
         }
         ;
-        --paper-item-selected-weight: var(--t-search-user-item-weight, 500);
+        --paper-item-selected-weight: var(--t-search-user-item-selected-weight, 500);
         --paper-item-selected: {
           color: var(--t-search-user-item-selected-color, rgba(0, 0, 0, 0.87));
           background-color: var(--t-search-user-item-selected-bg, #f1f1f1);
@@ -88,6 +89,7 @@
       paper-item:hover {
         --paper-item: {
           color: var(--t-search-user-item-hover-color, rgba(0, 0, 0, 0.87));
+          background-color: var(--t-search-user-item-selected-bg, #f1f1f1);
           cursor: pointer;
         }
         ;
@@ -95,7 +97,7 @@
 
       paper-item iron-icon {
         margin-right: 10px;
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
+        --iron-icon-fill-color: var(--t-search-user-item-icon-color, rgba(0, 0, 0, 0.30));
       }
 
       .close-dialog {
@@ -104,7 +106,6 @@
         right: 17px;
         top: 0;
         cursor: pointer;
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
       }
 
       [slot="dropdown-content"] {
@@ -128,12 +129,12 @@
           width: var(--t-search-user-icon-button-width, 24px);
           height: var(--t-search-user-icon-button-height, 24px);
           padding: var(--t-search-user-icon-button-padding, 0);
-          --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, #dadada);
+          --iron-icon-fill-color: var(--t-search-user-icon-button-icon-color-inversed, #dadada);
         }
         ;
 
         --paper-item: {
-          --iron-icon-fill-color: var(--t-search-user-icon-color-inversed, rgba(0, 0, 0, 0.20));
+          --iron-icon-fill-color: var(--t-search-user-item-icon-color-inversed, rgba(0, 0, 0, 0.30));
         }
         ;
       }
