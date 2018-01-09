@@ -55,13 +55,11 @@
         --paper-item-selected-weight: var(--t-search-user-item-selected-weight, 500);
         --paper-item-selected: {
           color: var(--t-search-user-item-selected-color, rgba(0, 0, 0, 0.87));
-          background-color: var(--t-search-user-item-selected-bg, #f1f1f1);
         }
         ;
 
         --paper-item-focused: {
           color: var(--t-search-user-item-focused-color, rgba(0, 0, 0, 0.87));
-          background-color: var(--t-search-user-item-focused-bg, #f1f1f1);
         }
         ;
         --paper-dialog: {
@@ -73,7 +71,10 @@
         }
         ;
       }
-
+      iron-dropdown:host {
+          width: 100%;
+          position: absolute !important;
+      } 
       [slot="dropdown-trigger"] {
         @apply --layout-horizontal;
         @apply --layout-center;
@@ -81,7 +82,6 @@
 
       [slot="dropdown-trigger"] span {
         padding-left: 5px;
-        min-width: var(--t-search-user-menu-btn-min-width, 130px);
         max-width: var(--t-search-user-menu-btn-max-width, 200px);
         @apply --paper-font-common-nowrap;
       }
@@ -108,13 +108,14 @@
         cursor: pointer;
       }
 
-      [slot="dropdown-content"] {
-        min-width: var(--t-search-user-dropdown-width, 200px);
-      }
-
       #searchUserDialog {
         top: 0;
       }
+
+      paper-menu-button[focused] ::slotted(paper-icon-button[icon="hardware:keyboard-arrow-down"]) {
+        display: none;
+      }
+
 
        :host([inversed]) {
         --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
@@ -138,6 +139,7 @@
         }
         ;
       }
+      
     </style>
 
     <!-- TRAVELLER MENU BUTTON -->
@@ -147,12 +149,22 @@
         <span title="">Choose Traveller</span>
         <paper-icon-button icon="hardware:keyboard-arrow-down"></paper-icon-button>
       </div>
-      <paper-listbox slot="dropdown-content">
+      <paper-listbox slot="dropdown-content" class="absolute-content">
         <paper-item>
           <iron-icon icon="social:person"></iron-icon> Register
         </paper-item>
         <paper-item on-click="__opensearchuserdialog">
           <iron-icon icon="icons:search"></iron-icon> Search
+        </paper-item>
+
+        <paper-item>
+          <iron-icon icon="icons:card-travel"></iron-icon> Traveler Trips
+        </paper-item>
+        <paper-item>
+          <iron-icon icon="icons:close"></iron-icon> Remove
+        </paper-item>
+        <paper-item>
+          <iron-icon icon="icons:assignment-ind"></iron-icon> Traveler Profile
         </paper-item>
       </paper-listbox>
     </paper-menu-button>
