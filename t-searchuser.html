@@ -13,134 +13,140 @@
 
 <dom-module id="t-searchuser">
   <template>
-    <style>
-       :host {
-        display: block;
-        @apply --paper-font-common-base;
-        text-transform: initial;
+    <custom-style>
+      <style is="custom-style">
+         :host {
+          display: block;
+          @apply --paper-font-common-base;
+          text-transform: initial;
+          margin: 0 10px;
 
-        /* PAPER MENU BUTTON STYLING */
-        --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, var(--primary-background-color));
-        --paper-menu-button: {
-          padding: var(--t-search-user-menu-btn-padding, 8px);
-          border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.20));
-          font-size: var(--t-search-user-menu-btn-font-size, 16px);
-          color: var(--t-search-user-menu-btn-color, rgba(0, 0, 0, 0.65));
-          cursor: pointer;
-        }
-        ;
-
-        /* PAPER ICON BUTTON STYLING */
-        --paper-icon-button: {
-          width: var(--t-search-user-icon-button-width, 24px);
-          height: var(--t-search-user-icon-button-height, 24px);
-          padding: var(--t-search-user-icon-button-padding, 0);
-          --iron-icon-fill-color: var(--t-search-user-icon-button-icon-color, rgba(0, 0, 0, 0.30));
-        }
-        ;
-
-        /* IRON ICON STYLING */
-        --iron-icon-width: var(--t-search-user-icon-width, 24px);
-        --iron-icon-height: var(--t-search-user-icon-height, 24px);
-        --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
-
-        /* PAPER ITEM STYLING */
-        --paper-item-min-height: var(--t-search-user-item-min-height, 40px);
-        --paper-item: {
-          color: var(--t-search-user-item-color, rgba(0, 0, 0, 0.65));
-          cursor: pointer;
+          /* IRON ICON STYLING */
+          --iron-icon-width: var(--t-search-user-icon-width, 17px);
+          --iron-icon-height: var(--t-search-user-icon-height, 17px);
           --iron-icon-fill-color: var(--t-search-user-icon-color, rgba(0, 0, 0, 0.30));
-        }
-        ;
-        --paper-item-selected-weight: var(--t-search-user-item-selected-weight, 500);
-        --paper-item-selected: {
-          color: var(--t-search-user-item-selected-color, rgba(0, 0, 0, 0.87));
-        }
-        ;
 
-        --paper-item-focused: {
-          color: var(--t-search-user-item-focused-color, rgba(0, 0, 0, 0.87));
-        }
-        ;
-        --paper-dialog: {
-          max-width: var(--t-search-user-modal-max-width, 700px);
-        }
-        ;
-        --paper-dialog-scrollable: {
-          width: 100%;
-        }
-        ;
-      }
-      iron-dropdown:host {
-          width: 100%;
-          position: absolute !important;
-      } 
-      [slot="dropdown-trigger"] {
-        @apply --layout-horizontal;
-        @apply --layout-center;
-      }
+          /* PAPER MENU BUTTON STYLING */
+          --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color, transparent);
 
-      [slot="dropdown-trigger"] span {
-        padding-left: 5px;
-        max-width: var(--t-search-user-menu-btn-max-width, 200px);
-        @apply --paper-font-common-nowrap;
-      }
+          --paper-menu-button: {
+            border: 1px solid var(--t-search-user-menu-btn-border-color, rgba(0, 0, 0, 0.20));
+            color: var(--t-search-user-menu-btn-color, rgba(0, 0, 0, 0.65));
+            cursor: pointer;
+            margin: var(--t-search-user-menu-btn-margin, 0 10px);
+            padding: var(--t-search-user-menu-btn-padding, 2px);
+          }
+          ;
 
-      paper-item:hover {
-        --paper-item: {
-          color: var(--t-search-user-item-hover-color, rgba(0, 0, 0, 0.87));
-          background-color: var(--t-search-user-item-selected-bg, #f1f1f1);
+          /* PAPER ICON BUTTON STYLING */
+          --paper-icon-button: {
+            width: var(--t-search-user-icon-btn-width, 17px);
+            height: var(--t-search-user-icon-btn-height, 17px);
+            padding: var(--t-search-user-icon-btn-padding, 0);
+            --iron-icon-fill-color: var(--t-search-user-icon-btn-icon-color, rgba(0, 0, 0, 0.30));
+          }
+          ;
+
+          /* PAPER ITEM STYLING */
+          --paper-item-min-height: var(--t-search-user-item-min-height, 30px);
+          --paper-item: {
+            color: var(--t-search-user-item-color, rgba(0, 0, 0, 0.65));
+            font-size: var(--t-search-user-item-font-size, 14px);
+            cursor: pointer;
+          }
+          ;
+          --paper-item-selected-weight: var(--t-search-user-item-selected-weight, 500);
+          --t-search-user-item-selected-bg-color: #0088cc;
+          --t-search-user-item-selected-bg-color-1: #0077b3;
+
+          --paper-item-selected: {
+            color: var(--t-search-user-item-selected-color, #fff);
+            background-color: inherit;
+            background: var(--t-search-user-item-selected-bg-color);
+            background: -moz-linear-gradient(top, var(--t-search-user-item-selected-bg-color) 0%, var(--t-search-user-item-selected-bg-color-1) 100%);
+            background: -webkit-linear-gradient(top, var(--t-search-user-item-selected-bg-color) 0%, var(--t-search-user-item-selected-bg-color-1) 100%);
+            background: linear-gradient(to bottom, var(--t-search-user-item-selected-bg-color) 0%, var(--t-search-user-item-selected-bg-color-1) 100%);
+            --iron-icon-fill-color: var(--t-search-user-item-selected-icon-color, #fff);
+            font-size: var(--t-search-user-item-font-size, 14px);
+          }
+          ;
+
+          --paper-item-focused: {
+            @apply --paper-item-selected;
+          }
+          ;
+          --paper-dialog: {
+            max-width: var(--t-search-user-modal-max-width, 700px);
+          }
+          ;
+          --paper-dialog-scrollable: {
+            width: 100%;
+          }
+          ;
+        }
+
+        [slot="dropdown-trigger"] {
+          @apply --layout-horizontal;
+          @apply --layout-center;
+        }
+
+        [slot="dropdown-trigger"] span {
+          padding-left: 5px;
+          max-width: var(--t-search-user-menu-btn-max-width, 200px);
+          font-size: var(--t-search-user-menu-btn-font-size, 12px);
+          @apply --paper-font-common-nowrap;
+        }
+
+        paper-item:hover {
+          @apply --paper-item-selected;
+          --iron-icon-fill-color: var(--t-search-user-item-selected-icon-color, #fff);
+        }
+
+        paper-item iron-icon {
+          margin-right: 10px;
+        }
+
+        .close-dialog {
+          position: absolute;
+          z-index: 1;
+          right: 17px;
+          top: 0;
           cursor: pointer;
         }
-        ;
-      }
 
-      paper-item iron-icon {
-        margin-right: 10px;
-        --iron-icon-fill-color: var(--t-search-user-item-icon-color, rgba(0, 0, 0, 0.30));
-      }
-
-      .close-dialog {
-        position: absolute;
-        z-index: 1;
-        right: 17px;
-        top: 0;
-        cursor: pointer;
-      }
-
-      #searchUserDialog {
-        top: 0;
-      }
-
-      paper-menu-button[focused] ::slotted(paper-icon-button[icon="hardware:keyboard-arrow-down"]) {
-        display: none;
-      }
-
-
-       :host([inversed]) {
-        --paper-menu-button-dropdown-background: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
-        --paper-menu-button: {
-          padding: var(--t-search-user-menu-btn-padding, 8px);
-          border: 1px solid var(--t-search-user-menu-btn-border-color-inversed, #dadada);
-          font-size: var(--t-search-user-menu-btn-font-size, 16px);
-          color: var(--t-search-user-menu-btn-color-inversed, #dadada);
+        #searchUserDialog {
+          top: 0;
         }
-        ;
-        --paper-icon-button: {
-          width: var(--t-search-user-icon-button-width, 24px);
-          height: var(--t-search-user-icon-button-height, 24px);
-          padding: var(--t-search-user-icon-button-padding, 0);
-          --iron-icon-fill-color: var(--t-search-user-icon-button-icon-color-inversed, #dadada);
-        }
-        ;
 
-        --paper-item: {
-          --iron-icon-fill-color: var(--t-search-user-item-icon-color-inversed, rgba(0, 0, 0, 0.30));
+        /* [slot="dropdown-content"] {
+          position: relative;
+          margin-top: 10px;
+          border-radius: var(--t-search-user-dropdown-border-radius, 6px);
         }
-        ;
-      }
-      
-    </style>
+        iron-dropdown ::slotted([slot="dropdown-content"]:before) {
+          position: absolute;
+          top: -7px;
+          left: var(--t-search-user-chevron-left-position, 9px);
+          display: inline-block;
+          border-right: 7px solid transparent;
+          border-bottom: 7px solid var(--t-search-user-chevron-border-color, #fff);
+          border-left: 7px solid transparent;
+          border-bottom-color: var(--t-search-user-chevron-bg-color, #fff);
+          content: '';
+        }
+        :host([horizontal-align="right"]) [slot="dropdown-content"]:before {
+          left: auto;
+          right: var(--t-search-user-chevron-right-position, 9px);
+        } */
+
+         :host([inversed]) {
+          --t-search-user-menu-btn-bg-color: var(--t-search-user-menu-btn-bg-color-inversed, transparent);
+          --t-search-user-menu-btn-border-color: var(--t-search-user-menu-btn-border-color-inversed, #dadada);
+          --t-search-user-menu-btn-color: var(--t-search-user-menu-btn-color-inversed, #dadada);
+          --t-search-user-icon-btn-icon-color: var(--t-search-user-icon-btn-icon-color-inversed, #dadada);
+        }
+      </style>
+    </custom-style>
 
     <!-- TRAVELLER MENU BUTTON -->
     <paper-menu-button no-overlap horizontal-align="left" vertical-align="top">
