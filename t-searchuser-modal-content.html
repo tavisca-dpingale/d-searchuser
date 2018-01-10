@@ -9,211 +9,213 @@
 
 <dom-module id="t-searchuser-modal-content">
   <template>
-    <style>
-       :host {
-        display: block;
-        @apply --paper-font-subhead;
-        color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
-
-        --paper-input-container: {
-          padding: 0;
-        }
-        ;
-
-        --paper-input-container-input: {
-          padding: var(--t-search-user-input-padding, 7px 10px);
-          border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.20));
-          width: calc(var(--t-search-user-input-width, 270px) - 20px);
-        }
-        ;
-
-        --paper-input-container-underline: {
-          border-color: transparent;
-        }
-        ;
-        --paper-input-container-underline-focus: {
-          border: 1px solid var(--t-search-user-input-underline-focused-border-color, #F89406);
-        }
-        ;
-
-        --paper-button: {
-          @apply --paper-font-subhead;
-          padding: var(--t-search-user-button-padding, 9px 10px);
-          background-color: var(--t-search-user-button-bg-color, #F89406);
-          color: var(--t-search-user-button-color, #fff);
-        }
-        ;
-
-        --paper-spinner-layer-1-color: orange;
-        --paper-spinner-layer-2-color: green;
-        --paper-spinner-layer-3-color: orange;
-        --paper-spinner-layer-4-color: green;
-
-        --paper-spinner-color: green;
-      }
-
-      [disabled] {
-        pointer-events: none;
-        opacity: 0.5;
-      }
-
-      a {
-        color: var(--t-search-user-button-bg-color, #F89406);
-        text-decoration: none;
-      }
-
-      h3 {
-        display: block;
-        margin-top: 0;
-        padding-bottom: 20px;
-        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-      }
-      
-      .search-container {
-        @apply --layout-horizontal;
-        @apply --layout-wrap;
-        @apply --layout-center-justified;
-        @apply --layout-center;
-        margin-bottom: 30px;
-      }
-
-      .search-container>* {
-        @apply --layout-flex-1;
-        margin: 0 10px;
-      }
-
-      .search-container>div {
-        width: 100%;
-        text-align: center;
-        @apply --paper-font-body1;
-        padding-top: 10px;
-      }
-
-      .result-header {
-        @apply --layout-horizontal;
-        @apply --layout-start;
-        margin-bottom: 10px;
-      }
-
-      .result-header>* {
-        @apply --layout-flex-auto;
-        margin: 0;
-      }
-
-      .result-header>a {
-        @apply --layout-horizontal;
-        @apply --layout-end-justified;
-      }
-
-      .result-header small {
-        @apply --paper-font-body1;
-        color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
-      }
-
-      .search-results {
-        max-width: 100%;
-        overflow: hidden;
-        overflow-x: auto;
-        margin-bottom: 20px;
-      }
-
-      table {
-        width: 100%;
-        border-top: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        border-right: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        margin-bottom: 15px;
-      }
-
-      table td,
-      table th {
-        padding: 5px;
-        border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        border-left: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
-        font-size: var(--t-search-user-table-font-size, 14px);
-        text-align: left;
-        white-space: nowrap;
-      }
-
-      table th {
-        font-weight: 500;
-      }
-
-      .result-pagination,
-      ul {
-        @apply --layout-horizontal;
-        @apply --layout-end-justified;
-        @apply --layout-center;
-      }
-
-      ul,
-      li {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      li a {
-        @apply --layout-horizontal;
-        @apply --layout-center-center;
-        @apply --paper-font-caption;
-        padding: 5px;
-        border: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
-        height: 15px;
-        width: 15px;
-        margin: 0 1px;
-      }
-
-      li:hover a,
-      li[active] a {
-        background-color: var(--t-search-user-result-page-selected-bg, #F89406);
-        border-color: var(--t-search-user-result-page-selected-border-color, #F89406);
-        color: #fff;
-      }
-
-      .result-pagination iron-icon {
-        margin-left: 10px;
-      }
-
-      .error-message {
-        color: var(--error-color);
-        text-align: center;
-      }
-
-      .loader {
-        color: var(--t-search-user-loader-color, #F89406);
-        @apply --layout-horizontal;
-        @apply --layout-center-center;
-      }
-
-      @media (max-width: 767px) {
+    <custom-style>
+      <style is="custom-style">
          :host {
-          --paper-input-container-input: {
-            padding: var(--t-search-user-input-padding, 10px);
-            border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.20));
-            width: calc(100% - 20px);
+          display: block;
+          @apply --paper-font-subhead;
+          color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
+
+          --paper-input-container: {
+            padding: 0;
           }
           ;
+
+          --paper-input-container-input: {
+            padding: var(--t-search-user-input-padding, 7px 10px);
+            border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.20));
+            width: calc(var(--t-search-user-input-width, 270px) - 20px);
+          }
+          ;
+
+          --paper-input-container-underline: {
+            border-color: transparent;
+          }
+          ;
+          --paper-input-container-underline-focus: {
+            border: 1px solid var(--t-search-user-input-underline-focused-border-color, #F89406);
+          }
+          ;
+
+          --paper-button: {
+            @apply --paper-font-subhead;
+            padding: var(--t-search-user-button-padding, 9px 10px);
+            background-color: var(--t-search-user-button-bg-color, #F89406);
+            color: var(--t-search-user-button-color, #fff);
+          }
+          ;
+
+          --paper-spinner-layer-1-color: orange;
+          --paper-spinner-layer-2-color: green;
+          --paper-spinner-layer-3-color: orange;
+          --paper-spinner-layer-4-color: green;
+
+          --paper-spinner-color: green;
         }
-        .search-container,
-        .result-header {
-          @apply --layout-vertical;
+
+        [disabled] {
+          pointer-events: none;
+          opacity: 0.5;
         }
+
+        a {
+          color: var(--t-search-user-button-bg-color, #F89406);
+          text-decoration: none;
+        }
+
+        h3 {
+          display: block;
+          margin-top: 0;
+          padding-bottom: 20px;
+          border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+        }
+
         .search-container {
+          @apply --layout-horizontal;
+          @apply --layout-wrap;
+          @apply --layout-center-justified;
+          @apply --layout-center;
+          margin-bottom: 30px;
+        }
+
+        .search-container>* {
+          @apply --layout-flex-1;
+          margin: 0 10px;
+        }
+
+        .search-container>div {
+          width: 100%;
+          text-align: center;
+          @apply --paper-font-body1;
+          padding-top: 10px;
+        }
+
+        .result-header {
+          @apply --layout-horizontal;
+          @apply --layout-start;
+          margin-bottom: 10px;
+        }
+
+        .result-header>* {
+          @apply --layout-flex-auto;
+          margin: 0;
+        }
+
+        .result-header>a {
+          @apply --layout-horizontal;
+          @apply --layout-end-justified;
+        }
+
+        .result-header small {
+          @apply --paper-font-body1;
+          color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
+        }
+
+        .search-results {
+          max-width: 100%;
+          overflow: hidden;
+          overflow-x: auto;
+          margin-bottom: 20px;
+        }
+
+        table {
+          width: 100%;
+          border-top: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+          border-right: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+          margin-bottom: 15px;
+        }
+
+        table td,
+        table th {
+          padding: 5px;
+          border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+          border-left: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+          color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
+          font-size: var(--t-search-user-table-font-size, 14px);
+          text-align: left;
+          white-space: nowrap;
+        }
+
+        table th {
+          font-weight: 500;
+        }
+
+        .result-pagination,
+        ul {
+          @apply --layout-horizontal;
+          @apply --layout-end-justified;
+          @apply --layout-center;
+        }
+
+        ul,
+        li {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        li a {
+          @apply --layout-horizontal;
+          @apply --layout-center-center;
+          @apply --paper-font-caption;
+          padding: 5px;
+          border: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
+          height: 15px;
+          width: 15px;
+          margin: 0 1px;
+        }
+
+        li:hover a,
+        li[active] a {
+          background-color: var(--t-search-user-result-page-selected-bg, #F89406);
+          border-color: var(--t-search-user-result-page-selected-border-color, #F89406);
+          color: #fff;
+        }
+
+        .result-pagination iron-icon {
+          margin-left: 10px;
+        }
+
+        .error-message {
+          color: var(--error-color);
           text-align: center;
         }
-        .search-container>*,
-        .result-header>*,
-        .result-header small {
-          display: block;
-          width: 100%;
-          margin: 0 0 5px 0;
+
+        .loader {
+          color: var(--t-search-user-loader-color, #F89406);
+          @apply --layout-horizontal;
+          @apply --layout-center-center;
         }
-        .result-header small {
-          margin-bottom: 0;
+
+        @media (max-width: 767px) {
+           :host {
+            --paper-input-container-input: {
+              padding: var(--t-search-user-input-padding, 10px);
+              border: 1px solid var(--t-search-user-input-border, rgba(0, 0, 0, 0.20));
+              width: calc(100% - 20px);
+            }
+            ;
+          }
+          .search-container,
+          .result-header {
+            @apply --layout-vertical;
+          }
+          .search-container {
+            text-align: center;
+          }
+          .search-container>*,
+          .result-header>*,
+          .result-header small {
+            display: block;
+            width: 100%;
+            margin: 0 0 5px 0;
+          }
+          .result-header small {
+            margin-bottom: 0;
+          }
         }
-      }
-    </style>
+      </style>
+    </custom-style>
     <h3>[[searchusertitle]]</h3>
 
     <!-- SEARCH  -->
