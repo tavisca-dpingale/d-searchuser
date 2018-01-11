@@ -45,12 +45,7 @@
           }
           ;
 
-          --paper-spinner-layer-1-color: orange;
-          --paper-spinner-layer-2-color: green;
-          --paper-spinner-layer-3-color: orange;
-          --paper-spinner-layer-4-color: green;
-
-          --paper-spinner-color: green;
+          --paper-spinner-color: var(--t-user-search-spinner-color, #F89406);
         }
 
         [disabled] {
@@ -63,10 +58,10 @@
           text-decoration: none;
         }
 
-        h3 {
+        .dialog-title {
           display: block;
           margin-top: 0;
-          padding-bottom: 20px;
+          padding-bottom: 10px;
           border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
         }
 
@@ -83,7 +78,7 @@
           margin: 0 10px;
         }
 
-        .search-container>div {
+        .search-container>small {
           width: 100%;
           text-align: center;
           @apply --paper-font-body1;
@@ -127,7 +122,7 @@
 
         table td,
         table th {
-          padding: 5px;
+          padding: 2px 5px;
           border-bottom: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
           border-left: 1px solid var(--t-search-user-border-color, rgba(0, 0, 0, 0.20));
           color: var(--primary-text-color, rgba(0, 0, 0, 0.54));
@@ -172,8 +167,13 @@
           color: #fff;
         }
 
-        .result-pagination iron-icon {
-          margin-left: 10px;
+        .result-pagination>* {
+          margin-left: 5px;
+        }
+
+        .result-pagination {
+          --iron-icon-width: 25px;
+          --iron-icon-height: 25px;
         }
 
         .error-message {
@@ -182,7 +182,6 @@
         }
 
         .loader {
-          color: var(--t-search-user-loader-color, #F89406);
           @apply --layout-horizontal;
           @apply --layout-center-center;
         }
@@ -216,27 +215,27 @@
         }
       </style>
     </custom-style>
-    <h3>[[searchusertitle]]</h3>
+    <h4 class="dialog-title">[[searchusertitle]]</h4>
 
     <!-- SEARCH  -->
     <div class="search-container">
-      <h4>Search For:</h4>
+      <h5>Search For:</h5>
       <paper-input no-label-float label="" placeholder="email@email.com"></paper-input>
       <paper-button>Go</paper-button>
-      <div>*Leave blank to see all users for this level</div>
+      <small>*Leave blank to see all users for this level</small>
     </div>
 
     <!-- LOADING -->
-    <template is="dom-if" if="{{showLoader}}">
+    <template is="dom-if" if="{{!showLoader}}">
       <div class="loader">
-        <paper-spinner active alt="Loading..."> </paper-spinner>
+        <paper-spinner-lite active alt="Loading..."> </paper-spinner-lite>
       </div>
     </template>
 
     <!-- ERROR MESSAGES -->
-    <template is="dom-if" if="{{errormsg}}">
+    <template is="dom-if" if="{{!errormsg}}">
       <div class="error-message">
-        <h4> [[errormsg]]</h4>
+        <h5>[[errormsg]]</h5>
       </div>
     </template>
 
@@ -300,6 +299,7 @@
         <a href="#" title="prev">
           <iron-icon icon="icons:chevron-left"></iron-icon>
         </a>
+        <small>1 of 2</small>
         <a href="#" title="next">
           <iron-icon icon="icons:chevron-right"></iron-icon>
         </a>
